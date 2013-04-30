@@ -102,3 +102,4 @@ record_user_click(index, 'good', 'http://www.udacity.com/cs101x/crawling.html')
 print lookup(index, 'good')
 #>>> [['http://www.udacity.com/cs101x/index.html', 0],
 #>>> ['http://www.udacity.com/cs101x/crawling.html', 1]]
+
