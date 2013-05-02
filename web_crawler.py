@@ -103,7 +103,7 @@ def lucky_search(index, ranks, keyword):
         return return_link
 
 #Here is an example showing a sequence of interactions:
-index, graph = crawl_web('http://www.udacity.com/cs101x/index.html')
+index, graph = crawl_web('http://nana-and-me.appspot.com/')
 ranks = compute_ranks(graph)
 print lucky_search(index, ranks, 'enough')
 
