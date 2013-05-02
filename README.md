@@ -1,4 +1,1 @@
-Web-Crawler-
-============
-
-Implemented a simple web crawler in Python
+Implemented a simple web crawler and search engine in Python
