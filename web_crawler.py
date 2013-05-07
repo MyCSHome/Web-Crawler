@@ -7,17 +7,10 @@ def get_page(url):
     except:
         return ""
 
-
-
-def union(a, b):
-    for e in b:
-        if e not in a:
-            a.append(e)
-
-
+    
 def crawl_web(seed):
-    tocrawl = [seed]
-    crawled = []
+    tocrawl = set([seed])
+    crawled = set([])
     index = {}
     graph = {}
     while tocrawl:
@@ -27,8 +20,8 @@ def crawl_web(seed):
             add_page_to_index(index, page, content)
             outlinks = get_all_links(content)
             graph[page] = outlinks
-            union(tocrawl, outlinks)
-            crawled.append(page)
+            tocrawl.update(outlinks)
+            crawled.add(page)
     return index, graph
 
 def add_page_to_index(index, url, content):
@@ -95,15 +88,15 @@ def lucky_search(index, ranks, keyword):
     else:
         links = index[keyword]
         return_link = ''
-        max = 0
+        max_rank = 0
         for link in links:
-            if ranks[link] > max:
-                max = ranks[link]
+            if ranks[link] > max_rank:
+                max_rank = ranks[link]
                 return_link = link
         return return_link
 
 #Here is an example showing a sequence of interactions:
-index, graph = crawl_web('http://nana-and-me.appspot.com/')
+index, graph = crawl_web('http://oald8.oxfordlearnersdictionaries.com/')
 ranks = compute_ranks(graph)
 print lucky_search(index, ranks, 'enough')
 
